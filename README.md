@@ -9,6 +9,9 @@ The same shape as the ad-hoc repo at work. Personal work only.
 - **A project that outgrows this repo** gets its own repo (`git subtree split --prefix projects/NNN-name`, keeping its
   history) and a tailored lab, a department of the NSF built `FROM` the base image.
 - **Conventions** (packages, data, agents, the analysis standards): `CLAUDE.md`.
+- **`main` takes pull requests only** (a GitHub ruleset, no bypass: JT included). Work on a branch, push it, merge
+  it as a PR on GitHub. The labs push with a fine-grained token (`GH_TOKEN` in their `secrets.env`) that reaches
+  this repo and nothing else.
 
 ## Index
 

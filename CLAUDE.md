@@ -40,7 +40,7 @@ projects/NNN-short-name/
 ## Working here as an agent
 
 - **Run the code you change** and look at its output before saying it works.
-- **Git:** commit on a branch named `agent/<short-task>` and push that branch. **Never push to `main`**, never
-  force-push. JT merges.
+- **Git:** commit on a branch named `agent/<short-task>` and push that branch; JT merges it as a pull request. GitHub
+  refuses direct pushes to `main` and force-pushes there (a ruleset), so don't try to work around a refusal.
 - **Jobs:** at home freely (`lab run`). **Anything in GCP that costs money needs JT's OK first:** ask, and stop.
 - **Done means:** the branch pushed, `milestone.md` updated, and a short summary of what changed, what ran, what's left.
