@@ -1,0 +1,30 @@
+---
+title: "__ID__: EDA"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    code_folding: hide
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+here::i_am("code/eda.Rmd")
+library(dplyr)
+library(ggplot2)
+OKABE_ITO <- c("#0072B2", "#E69F00", "#56B4E9", "#D55E00", "#AAAAAA")
+```
+
+<!-- Required in every project. If no EDA is warranted, say why here, with a date. -->
+
+## The data: n at every stage
+
+## The unit of a row
+
+## Level sets, asserted
+
+## Base rates
+
+## Missingness, and what it means
+
+## Over time

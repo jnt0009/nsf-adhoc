@@ -1,0 +1,24 @@
+# NSF project defaults: code and docs in git; data, outputs, environments and secrets out.
+data/
+artifacts/
+*.parquet
+*.csv
+*.rds
+*.feather
+.env
+*.json.key
+.venv/
+renv/library/
+renv/staging/
+.Rproj.user/
+.Rhistory
+.RData
+.quarto/
+_freeze/
+__pycache__/
+.ipynb_checkpoints/
+.DS_Store
+# project caches and renders
+*_cache/
+*_files/
+*.html

@@ -1,0 +1,24 @@
+#!/bin/bash
+# Makes projects/NNN-<name>/ from templates/project/ with the next free number, and adds its row to README.md's index.
+#   scripts/new-project nba-hoopr        (run from anywhere inside the repo)
+set -euo pipefail
+name=${1:-}
+[[ "$name" =~ ^[a-z0-9][a-z0-9-]*$ ]] || { echo "usage: scripts/new-project <short-name>  (lowercase letters, digits, dashes)" >&2; exit 1; }
+root=$(git -C "$(dirname "$0")" rev-parse --show-toplevel)
+cd "$root"
+last=$(ls projects 2>/dev/null | sed -n 's/^\([0-9][0-9][0-9]\)-.*/\1/p' | sort -n | tail -1)
+num=$(printf %03d $((10#${last:-0} + 1)))
+id="$num-$name"
+[ ! -e "projects/$id" ] || { echo "projects/$id already exists" >&2; exit 1; }
+ls projects 2>/dev/null | grep -q -- "-$name\$" && { echo "a project named $name already exists" >&2; exit 1; }
+mkdir -p "projects/$id"
+cp -R templates/project/. "projects/$id/"
+mkdir -p "projects/$id/data/raw" "projects/$id/artifacts"
+today=$(date +%Y-%m-%d)
+for f in milestone.md code/eda.Rmd code/make_data.R; do
+    sed -i.bak "s/__ID__/$id/g; s/__DATE__/$today/g" "projects/$id/$f" && rm -f "projects/$id/$f.bak"
+done
+# an .Rproj-free marker so here::here() finds the project folder from any working directory
+touch "projects/$id/.here"
+printf '| %s | `projects/%s` | <question> | <source> | started %s |\n' "$num" "$id" "$today" >> README.md
+echo "made projects/$id (next: fill in its README row and milestone summary)"

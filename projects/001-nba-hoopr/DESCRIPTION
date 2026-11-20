@@ -1,0 +1,3 @@
+Type: project
+Description: 001-nba-hoopr: packages beyond the NSF image (renv records these).
+Imports: hoopR
